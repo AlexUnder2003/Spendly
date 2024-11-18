@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Add Coin
+{% endblock %}
+
+{% block sidebar %}
+  {% include 'includes/sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 justify-content-between border-bottom">
+  <h2 class="text-center mb-4">Add Coin to Your Savings</h2>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="text-center {% if message.tags == 'success' %}text-success{% elif message.tags == 'error' %}text-danger{% else %}text-muted{% endif %} mt-3">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <form action="{% url 'coins:add_coin' %}" method="post" class="form-group">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="coin_id">Choose coin:</label>
+      {{ form.coin_id }}
+    </div>
+
+    <div class="form-group">
+      <label for="id_quantity">Quantity:</label>
+      {{ form.quantity }} <!-- Поле quantity из UserCoinForm -->
+    </div>
+
+    <button type="submit" class="btn btn-dark orange btn-block my-3">Add</button>
+  </form>
+</div>
+{% endblock %}

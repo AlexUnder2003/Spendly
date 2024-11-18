@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    My coins
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'includes/sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="row w-100">
+        <div class="col-md-6 mx-auto">
+            <h2 class="text-center mb-2">Change profile data</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-dark btn-lg w-100 orange text-black">Submit</button>
+            </form>
+        </div>
+    </div>
+  </div>
+{% endblock %}
