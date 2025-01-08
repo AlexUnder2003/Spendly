@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    image: alexunder2003/spendly:latest # Используем загруженный образ
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
@@ -16,7 +16,7 @@ services:
       - "8000:8000" # Прокси HTTP-трафик с порта 8000 хоста на порт 8000 контейнера
 
   worker:
-    build: .
+    image: alexunder2003/spendly:latest # Используем загруженный образ
     command: celery -A smartsave worker --loglevel=info
     volumes:
       - .:/app
@@ -28,7 +28,7 @@ services:
       - DJANGO_SETTINGS_MODULE=smartsave.settings
 
   beat:
-    build: .
+    image: alexunder2003/spendly:latest # Используем загруженный образ
     command: celery -A smartsave beat --loglevel=info
     volumes:
       - .:/app
