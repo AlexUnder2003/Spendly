@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    networks:
+      - smartsave_default
+    environment:
+      - DJANGO_SETTINGS_MODULE=smartsave.settings
+    ports:
+      - "8000:8000" # Прокси HTTP-трафик с порта 8000 хоста на порт 8000 контейнера
+
+  worker:
+    build: .
+    command: celery -A smartsave worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    networks:
+      - smartsave_default
+    environment:
+      - DJANGO_SETTINGS_MODULE=smartsave.settings
+
+  beat:
+    build: .
+    command: celery -A smartsave beat --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    networks:
+      - smartsave_default
+    environment:
+      - DJANGO_SETTINGS_MODULE=smartsave.settings
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - smartsave_default
+
+networks:
+  smartsave_default:
+    external: true
