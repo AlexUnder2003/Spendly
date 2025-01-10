@@ -6,7 +6,7 @@ from coins.models import Coin, UserCoin
 
 class AddCoinForm(forms.Form):
     coin_id = forms.ModelChoiceField(
-        queryset=Coin.objects.all(),
+        queryset=Coin.objects.all().order_by('name'),
         label="Select Coin",
         widget=forms.Select(attrs={"class": "form-control"})
     )
@@ -31,3 +31,12 @@ class AddCoinForm(forms.Form):
             user_coin.save()
 
         return user_coin
+    
+    
+class EditCoinForm(forms.ModelForm):
+    class Meta:
+        model = UserCoin
+        fields = ['quantity']  # Поле для редактирования количества монеты
+        widgets = {
+            'quantity': forms.NumberInput(attrs={'class': 'form-control'})
+        }

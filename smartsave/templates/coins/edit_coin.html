@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  Add Coin
+  Edit Coin
 {% endblock %}
 
 {% block sidebar %}
@@ -11,23 +11,22 @@
 
 {% block content %}
 <div class="container mt-5 justify-content-between border-bottom">
-  <h2 class="text-center mb-4">Add Coin to Your Savings</h2>
+  <h2 class="text-center mb-4">Edit Coin in Your Savings</h2>
 
-
-  <form action="{% url 'coins:add_coin' %}" method="post" class="form-group">
+  <form action="{% url 'coins:edit_coin' coin.id %}" method="post" class="form-group">
     {% csrf_token %}
 
     <div class="form-group">
-      <label for="coin_id">Choose coin:</label>
-      {{ form.coin_id }}
+      <label for="coin_id">Coin:</label>
+      <input type="text" class="form-control" id="coin_id" value="{{ form.coin_id.value }}" disabled>
     </div>
 
     <div class="form-group">
       <label for="id_quantity">Quantity:</label>
-      {{ form.quantity }} <!-- Поле quantity из UserCoinForm -->
+      {{ form.quantity }}
     </div>
 
-    <button type="submit" class="btn btn-dark orange btn-block my-3">Add</button>
+    <button type="submit" class="btn btn-dark orange btn-block my-3">Save Changes</button>
   </form>
 </div>
 {% endblock %}

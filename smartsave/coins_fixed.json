@@ -422,5 +422,13 @@
             "name": "Uphold",
             "symbol": "UPHOLD"
         }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 93,
+        "fields": {
+            "name": "NEAR Protocol",
+            "symbol": "NEAR"
+        }
     }
 ]

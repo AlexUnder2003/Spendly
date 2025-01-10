@@ -1,9 +1,10 @@
 from decimal import Decimal, ROUND_HALF_UP
 
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 
-from .forms import AddCoinForm
+from .forms import AddCoinForm, EditCoinForm
 from .models import UserCoin
 from .functions import get_coin_prices
 from .tasks import calculate_daily_balance
@@ -59,6 +60,21 @@ def my_coins(request):
 
 @login_required
 def delete_coin(request, coin_id):
-    coin = get_object_or_404(UserCoin, coin_id=coin_id, user=request.user)
+    coin = get_object_or_404(UserCoin, id=coin_id, user=request.user)
     coin.delete()  # Удаляем монету
     return redirect('coins:my_coins')
+
+
+@login_required
+def edit_coin(request, coin_id):
+    coin = get_object_or_404(UserCoin, id=coin_id, user=request.user)
+
+    if request.method == 'POST':
+        form = EditCoinForm(request.POST, instance=coin)
+        if form.is_valid():
+            form.save()
+            return redirect('coins:my_coins')
+    else:
+        form = EditCoinForm(instance=coin)
+
+    return render(request, 'coins/edit_coin.html', {'form': form, 'coin': coin})
