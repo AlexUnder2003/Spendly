@@ -1,0 +1,426 @@
+[
+    {
+        "model": "coins.coin",
+        "pk": 1,
+        "fields": {
+            "name": "Bitcoin",
+            "symbol": "BTC"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 2,
+        "fields": {
+            "name": "Ethereum",
+            "symbol": "ETH"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 3,
+        "fields": {
+            "name": "Tether",
+            "symbol": "USDT"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 4,
+        "fields": {
+            "name": "BNB",
+            "symbol": "BNB"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 5,
+        "fields": {
+            "name": "USD Coin",
+            "symbol": "USDC"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 6,
+        "fields": {
+            "name": "XRP",
+            "symbol": "XRP"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 7,
+        "fields": {
+            "name": "Cardano",
+            "symbol": "ADA"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 8,
+        "fields": {
+            "name": "Dogecoin",
+            "symbol": "DOGE"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 9,
+        "fields": {
+            "name": "Solana",
+            "symbol": "SOL"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 10,
+        "fields": {
+            "name": "TRON",
+            "symbol": "TRX"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 11,
+        "fields": {
+            "name": "Polkadot",
+            "symbol": "DOT"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 12,
+        "fields": {
+            "name": "Polygon",
+            "symbol": "MATIC"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 13,
+        "fields": {
+            "name": "Litecoin",
+            "symbol": "LTC"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 14,
+        "fields": {
+            "name": "Shiba Inu",
+            "symbol": "SHIB"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 15,
+        "fields": {
+            "name": "Wrapped Bitcoin",
+            "symbol": "WBTC"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 16,
+        "fields": {
+            "name": "Dai",
+            "symbol": "DAI"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 17,
+        "fields": {
+            "name": "Avalanche",
+            "symbol": "AVAX"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 18,
+        "fields": {
+            "name": "Uniswap",
+            "symbol": "UNI"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 19,
+        "fields": {
+            "name": "Chainlink",
+            "symbol": "LINK"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 20,
+        "fields": {
+            "name": "LEO Token",
+            "symbol": "LEO"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 21,
+        "fields": {
+            "name": "Cosmos",
+            "symbol": "ATOM"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 22,
+        "fields": {
+            "name": "Monero",
+            "symbol": "XMR"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 23,
+        "fields": {
+            "name": "Ethereum Classic",
+            "symbol": "ETC"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 24,
+        "fields": {
+            "name": "Stellar",
+            "symbol": "XLM"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 25,
+        "fields": {
+            "name": "Bitcoin Cash",
+            "symbol": "BCH"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 26,
+        "fields": {
+            "name": "Algorand",
+            "symbol": "ALGO"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 27,
+        "fields": {
+            "name": "VeChain",
+            "symbol": "VET"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 28,
+        "fields": {
+            "name": "Filecoin",
+            "symbol": "FIL"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 29,
+        "fields": {
+            "name": "Internet Computer",
+            "symbol": "ICP"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 64,
+        "fields": {
+            "name": "Kusama",
+            "symbol": "KSM"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 65,
+        "fields": {
+            "name": "PancakeSwap",
+            "symbol": "CAKE"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 66,
+        "fields": {
+            "name": "Terra",
+            "symbol": "LUNA"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 67,
+        "fields": {
+            "name": "Fantom",
+            "symbol": "FTM"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 68,
+        "fields": {
+            "name": "Theta Network",
+            "symbol": "THETA"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 69,
+        "fields": {
+            "name": "Yearn.finance",
+            "symbol": "YFI"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 71,
+        "fields": {
+            "name": "Bitcoin SV",
+            "symbol": "BSV"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 73,
+        "fields": {
+            "name": "Elrond",
+            "symbol": "EGLD"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 74,
+        "fields": {
+            "name": "Celo",
+            "symbol": "CELO"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 75,
+        "fields": {
+            "name": "IoTeX",
+            "symbol": "IOTX"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 76,
+        "fields": {
+            "name": "Pundi X",
+            "symbol": "PUNDIX"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 77,
+        "fields": {
+            "name": "Quant",
+            "symbol": "QNT"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 78,
+        "fields": {
+            "name": "Aavegotchi",
+            "symbol": "GHST"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 79,
+        "fields": {
+            "name": "Kava",
+            "symbol": "KAVA"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 80,
+        "fields": {
+            "name": "Hegic",
+            "symbol": "HEGIC"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 82,
+        "fields": {
+            "name": "Waves",
+            "symbol": "WAVES"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 83,
+        "fields": {
+            "name": "Basic Attention Token",
+            "symbol": "BAT"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 84,
+        "fields": {
+            "name": "SushiSwap",
+            "symbol": "SUSHI"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 85,
+        "fields": {
+            "name": "Kyber Network",
+            "symbol": "KNC"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 86,
+        "fields": {
+            "name": "Reserve Rights",
+            "symbol": "RSR"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 87,
+        "fields": {
+            "name": "DigiByte",
+            "symbol": "DGB"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 89,
+        "fields": {
+            "name": "Arweave",
+            "symbol": "AR"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 90,
+        "fields": {
+            "name": "Render Token",
+            "symbol": "RNDR"
+        }
+    },
+    {
+        "model": "coins.coin",
+        "pk": 92,
+        "fields": {
+            "name": "Uphold",
+            "symbol": "UPHOLD"
+        }
+    }
+]

@@ -1,7 +1,7 @@
 from decimal import Decimal, ROUND_HALF_UP
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 
 from .forms import AddCoinForm
 from .models import UserCoin
@@ -46,7 +46,8 @@ def my_coins(request):
             "symbol": coin.coin.symbol,
             "quantity": coin.quantity,
             "price": prices.get(coin.coin.name, 0),
-            "value": (coin.quantity * Decimal(prices.get(coin.coin.name, 0))).quantize(Decimal('0.00'), rounding=ROUND_HALF_UP)
+            "value": (coin.quantity * Decimal(prices.get(coin.coin.name, 0))).quantize(Decimal('0.00'), rounding=ROUND_HALF_UP),
+            "id": coin.coin.id,
         }
         for coin in coins
     ]
@@ -54,3 +55,10 @@ def my_coins(request):
     context = {'coins': coins_with_prices}
 
     return render(request, 'coins/my_coins.html', context)
+
+
+@login_required
+def delete_coin(request, coin_id):
+    coin = get_object_or_404(UserCoin, coin_id=coin_id, user=request.user)
+    coin.delete()  # Удаляем монету
+    return redirect('coins:my_coins')
