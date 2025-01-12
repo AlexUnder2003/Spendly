@@ -14,60 +14,98 @@
         <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
         <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
       </div>
-      <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1">
-        <svg class="bi"><use xlink:href="#calendar3"/></svg>
-        This week
-      </button>
+      <div class="dropdown">
+        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle d-flex align-items-center gap-1" id="dateRangeBtn" data-bs-toggle="dropdown" aria-expanded="false">
+          <svg class="bi"><use xlink:href="#calendar3"/></svg>
+          Select Date Range
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <div id="dateRangePicker" class="d-none p-3">
+              <input type="date" id="startDate" class="form-control mb-2" placeholder="Start Date">
+              <input type="date" id="endDate" class="form-control mb-2" placeholder="End Date">
+              <button class="btn btn-secondary form-control" id="applyDateRange">Apply</button>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-  <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+  <canvas class="my-4 w-100" id="myChart" width="900" height="315"></canvas>
 
   <script>
-      async function loadChartData() {
-          try {
-              const response = await fetch("{% url 'dashboard:chart_data' %}");
-              const data = await response.json();
-              return data;
-          } catch (error) {
-              console.error("Ошибка загрузки данных:", error);
-              return null;
-          }
+    async function loadChartData() {
+      try {
+          const params = new URLSearchParams(window.location.search);  // Извлекаем параметры из URL
+          const response = await fetch("{% url 'dashboard:chart_data' %}?" + params.toString());
+          const data = await response.json();
+          return data;
+      } catch (error) {
+          console.error("Ошибка загрузки данных:", error);
+          return null;
       }
+  }
 
-      async function renderChart() {
-          const data = await loadChartData();
-          if (!data) return;
+    // Функция для рендеринга графика с новыми данными
+    async function renderChart() {
+        const data = await loadChartData();
+        if (!data) return;
 
-          const ctx = document.getElementById('myChart');
-          const myChart = new Chart(ctx, {
-              type: 'line',
-              data: {
-                  labels: data.labels,  // Используем данные из AJAX
-                  datasets: [{
-                      data: data.data,    // Используем данные из AJAX
-                      lineTension: 0,
-                      backgroundColor: 'transparent',
-                      borderColor: 'orange',
-                      borderWidth: 4,
-                      pointBackgroundColor: '#007bff'
-                  }]
-              },
-              options: {
-                  plugins: {
-                      legend: {
-                          display: false
-                      },
-                      tooltip: {
-                          boxPadding: 3
-                      }
-                  }
-              }
-          });
-      }
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.labels,  // Используем данные из AJAX
+                datasets: [{
+                    data: data.data,    // Используем данные из AJAX
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: 'orange',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        boxPadding: 3
+                    }
+                }
+            }
+        });
+    }
 
-    // Вызов функции для рендеринга графика
+    // Обработчик для отображения/скрытия блока выбора диапазона дат
+    document.getElementById('dateRangeBtn').addEventListener('click', function() {
+        const picker = document.getElementById('dateRangePicker');
+        picker.classList.toggle('d-none');
+    });
+
+    // Обработчик для применения выбранного диапазона дат
+    document.getElementById('applyDateRange').addEventListener('click', function() {
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+
+        if (startDate && endDate) {
+            // Формируем новый URL с параметрами start_date и end_date
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.set('start_date', startDate);
+            newUrl.searchParams.set('end_date', endDate);
+
+            // Перезагружаем страницу с новыми параметрами
+            window.location.href = newUrl.toString();
+        } else {
+            alert('Please select both start and end dates.');
+        }
+    });
+
+    // Инициализация графика при загрузке страницы
     renderChart();
   </script>
+
   <p class="h2">My coins
     <a href="{% url 'coins:add_coin' %}"><i class="bi bi-plus-circle px-5 h3 my-2 add"></i></a>
   </p>

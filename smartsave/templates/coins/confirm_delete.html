@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-  Edit Coin
+  Delete Coin
 {% endblock %}
 
 {% block sidebar %}
@@ -11,22 +11,17 @@
 
 {% block content %}
 <div class="container mt-5 justify-content-between border-bottom">
-  <h2 class="text-center mb-4">Edit Coin in Your Savings</h2>
+  <h2 class="text-center mb-4">Are you sure you want to delete {{ coin_name }}?</h2>
 
   <form method="post" class="form-group">
     {% csrf_token %}
 
     <div class="form-group">
       <label for="coin_id">Coin:</label>
-      <input type="text" class="form-control" id="coin_id" value="{{ form.coin_id.value }}" disabled>
+      <input type="text" class="form-control" id="coin_id" value="{{ coin_name }}" disabled>
     </div>
 
-    <div class="form-group">
-      <label for="id_quantity">Quantity:</label>
-      {{ form.quantity }}
-    </div>
-
-    <button type="submit" class="btn btn-dark orange btn-block my-3">Save Changes</button>
+    <button type="submit" class="btn btn-dark orange btn-block my-3">Delete</button>
   </form>
 </div>
 {% endblock %}
