@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: spendly:latest
+    image: alexunder2003/spendly:latest
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
@@ -13,10 +13,10 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=smartsave.settings
     ports:
-      - "8000:8000" # Прокси HTTP-трафик с порта 8000 хоста на порт 8000 контейнера
+      - "8000:8000"
 
   worker:
-    image: spendly:latest
+    image: alexunder2003/spendly:latest
     command: celery -A smartsave worker --loglevel=info
     volumes:
       - .:/app
@@ -28,7 +28,7 @@ services:
       - DJANGO_SETTINGS_MODULE=smartsave.settings
 
   beat:
-    image: spendly:latest
+    image: alexunder2003/spendly:latest
     command: celery -A smartsave beat --loglevel=info
     volumes:
       - .:/app
@@ -48,4 +48,4 @@ services:
 
 networks:
   smartsave_default:
-    driver: bridge  # Используем стандартный драйвер bridge для изолированной сети
+    driver: bridge
