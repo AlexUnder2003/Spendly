@@ -13,9 +13,9 @@ app.config_from_object("django.conf:settings")
 app.conf.imports = ("coins.tasks",)
 
 app.conf.beat_schedule = {
-    "test_task_every_10_seconds": {
+    "update_balance_30_minutes": {
         "task": "coins.tasks.calculate_daily_balance",
-        "schedule": timedelta(seconds=60),  # Каждые 10 секунд
+        "schedule": timedelta(seconds=1800),  # Каждые 10 секунд
     },
 }
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
